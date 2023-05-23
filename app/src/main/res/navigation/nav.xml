@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/levelFragment">
+
+    <fragment
+        android:id="@+id/levelFragment"
+        android:name="uz.gita.play_market_memory_game.presentation.screen.fragment.LevelFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_level">
+        <action
+            android:id="@+id/action_levelFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="uz.gita.play_market_memory_game.presentation.screen.fragment.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game">
+        <argument
+            android:name="level"
+            app:argType="uz.gita.play_market_memory_game.data.LevelEnum" />
+    </fragment>
+</navigation>
