@@ -9,7 +9,7 @@
 
     <FrameLayout
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:layout_marginTop="100dp"
         android:orientation="vertical"
         android:splitMotionEvents="false"
@@ -48,8 +48,9 @@
 
     <TextView
         android:id="@+id/addMoney"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintLeft_toLeftOf="parent"

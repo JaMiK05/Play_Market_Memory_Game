@@ -16,16 +16,12 @@ class LevelFragment : Fragment(R.layout.fragment_level) {
 
     private val binding by viewBinding(FragmentLevelBinding::bind)
 
+    private val heigh = 120f
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding.apply {
             addMoney.setOnLongClickListener {
-                Snackbar.make(binding.root,
-                    "daily bonus 10k coin",
-                    Snackbar.LENGTH_SHORT)
-                    .setBackgroundTint(ContextCompat.getColor(requireContext(),
-                        R.color.teal_700))
-                    .show()
                 coinplus()
                 true
             }
@@ -38,7 +34,7 @@ class LevelFragment : Fragment(R.layout.fragment_level) {
             }
             medium.apply {
                 isEnabled = false
-                animate().setDuration(500).y(300f).withEndAction {
+                animate().setDuration(500).y(heigh * 2f).withEndAction {
                     isEnabled = true
                     easy.animate().setDuration(300).translationX(easy.rotationX + 100f)
                         .withEndAction {
@@ -49,9 +45,10 @@ class LevelFragment : Fragment(R.layout.fragment_level) {
                     openGameScreen(LevelEnum.MEDIUM)
                 }
             }
+
             hard.apply {
                 isEnabled = false
-                animate().setDuration(500).y(600f).withEndAction {
+                animate().setDuration(500).y(heigh * 4).withEndAction {
                     animate().setDuration(300).translationX(rotationX - 100f)
                         .withEndAction {
                             isEnabled = true
@@ -65,8 +62,10 @@ class LevelFragment : Fragment(R.layout.fragment_level) {
     }
 
     private fun coinplus() {
-        val shared = requireContext().getSharedPreferences("local",
-            Context.MODE_PRIVATE)
+        val shared = requireContext().getSharedPreferences(
+            "local",
+            Context.MODE_PRIVATE
+        )
         val coin = shared.getInt("coin", 100) + 10_000
         shared.edit().putInt("coin", coin).apply()
 

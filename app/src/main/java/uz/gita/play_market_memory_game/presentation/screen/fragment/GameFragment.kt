@@ -57,8 +57,10 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         defLevel = args.level
         requireActivity().apply {
-            window.setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-                WindowManager.LayoutParams.FLAG_SECURE)
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE
+            )
         }
 
         coin = sharedprev.getInt("coin", 100)
@@ -78,11 +80,16 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 dial?.apply {
                     setSee {
                         if (coin < 100) {
-                            Snackbar.make(binding.root,
+                            Snackbar.make(
+                                binding.root,
                                 "you don't have enough money",
-                                Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(
-                                requireContext(),
-                                R.color.teal_700)).show()
+                                Snackbar.LENGTH_SHORT
+                            ).setBackgroundTint(
+                                ContextCompat.getColor(
+                                    requireContext(),
+                                    R.color.teal_700
+                                )
+                            ).show()
                             dismiss()
                             return@setSee
                         }
@@ -95,11 +102,16 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                     }
                     setPlusTime {
                         if (coin < 80) {
-                            Snackbar.make(binding.root,
+                            Snackbar.make(
+                                binding.root,
                                 "you don't have enough money",
-                                Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(
-                                requireContext(),
-                                R.color.teal_700)).show()
+                                Snackbar.LENGTH_SHORT
+                            ).setBackgroundTint(
+                                ContextCompat.getColor(
+                                    requireContext(),
+                                    R.color.teal_700
+                                )
+                            ).show()
                             dismiss()
                             return@setPlusTime
                         }
@@ -110,11 +122,16 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                     }
                     setMinsCard {
                         if (coin < 60) {
-                            Snackbar.make(binding.root,
+                            Snackbar.make(
+                                binding.root,
                                 "you don't have enough money",
-                                Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(
-                                requireContext(),
-                                R.color.teal_700)).show()
+                                Snackbar.LENGTH_SHORT
+                            ).setBackgroundTint(
+                                ContextCompat.getColor(
+                                    requireContext(),
+                                    R.color.teal_700
+                                )
+                            ).show()
                             dismiss()
                             return@setMinsCard
                         }
@@ -229,8 +246,12 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         val jyolti = timer / 3
         binding.progressBar.apply {
             val process = this
-            process.progressDrawable.setTint(ContextCompat.getColor(requireContext(),
-                R.color.teal_200))
+            process.progressDrawable.setTint(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.teal_200
+                )
+            )
             val animation = ObjectAnimator.ofInt(process, "progress", 0, 100)
             animation.duration = 3800L
             animation.interpolator = DecelerateInterpolator()
@@ -247,14 +268,26 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 progressBar.max = timer
                 while (timer >= 0) {
                     if (timer > jyolti) {
-                        progressBar.progressDrawable?.setTint(ContextCompat.getColor(requireContext(),
-                            R.color.teal_200))
+                        progressBar.progressDrawable?.setTint(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.teal_200
+                            )
+                        )
                     } else if (timer > kras) {
-                        progressBar.progressDrawable?.setTint(ContextCompat.getColor(requireContext(),
-                            android.R.color.holo_orange_light))
+                        progressBar.progressDrawable?.setTint(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                android.R.color.holo_orange_light
+                            )
+                        )
                     } else {
-                        progressBar.progressDrawable?.setTint(ContextCompat.getColor(requireContext(),
-                            android.R.color.holo_red_dark))
+                        progressBar.progressDrawable?.setTint(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                android.R.color.holo_red_dark
+                            )
+                        )
                     }
                     progressBar.progress = timer
                     countdown.text = "$timer"
@@ -423,9 +456,11 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 LevelEnum.EASY -> {
                     coinl = 15
                 }
+
                 LevelEnum.MEDIUM -> {
                     coinl = 25
                 }
+
                 LevelEnum.HARD -> {
                     coinl = 50
                 }
